@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.appsys.dao.appcategory.AppCategoryDao">
+	<select id="categoryLevelList" resultType="AppCategory" parameterType="int">
+		SELECT * FROM `app_category` WHERE 1=1
+		<if test="parentId==null"> and `parentId` IS NULL</if>
+		<if test="parentId!=null and parentId!=0"> and `parentId` = #{parentId}</if> 
+	</select>
+</mapper>
